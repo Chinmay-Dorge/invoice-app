@@ -1,11 +1,11 @@
 import React from 'react'
 
-const ClientDetails = () => {
+const ClientDetails = ({clientName, clientAddress}) => {
     return (
         <>
             <section className="mt-5">
-                <h2 className="text-xl upercase">Client Name</h2>
-                <p>Client Address</p>
+                <h2 className="text-xl upercase">{clientName}</h2>
+                <p>{clientAddress}</p>
             </section>
         </>
     )
