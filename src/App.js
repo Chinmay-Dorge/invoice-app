@@ -1,62 +1,55 @@
+import ClientDetails from "./components/ClientDetails";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import MainDetails from "./components/MainDetails";
+import Notes from "./components/Notes";
+import Table from "./components/Table";
+import Dates from './components/Dates';
+
+import {useState} from 'react';
 
 function App() {
+  const [showInvoice, setShowInvoice] = useState(false);
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [bankName, setBankName] = useState('');
+  const [bankAccount, setBankAccount] = useState('');
+  const [website, setWebsite] = useState('');
+  const [clientName, setclientName] = useState('');
+  const [clientAddress, setClientAddress] = useState('');
+  const [invoiceNumber, setInvoiceNumber] = useState('');
+  const [invoiceDate, setInvoiceDate] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const [notes, setNotes] = useState('');
+
   const handlePrint = () => {
     window.print();
   }
-
   return (
     <>
       <main className="p-5 m-5 xl:max-w-4xl xl:mx-auto bg-white rouned shadow">
-        <header className="flex flex-col items-center justify-center mb-5 xl:flex-row xl:justify-between">
-          <div>
-            <h2 className="font-bold uppercase tracking-wide text-4xl mb-3">Invoice App</h2>
+        {showInvoice ? <div>
+          <Header handlePrint={handlePrint}/>
+          <MainDetails />
+          <ClientDetails />
+          <Dates />
+          <Table />
+          <Notes />
+          <Footer />
+          <button onClick={() => setShowInvoice(false)}
+          className="bg-blue-500 py-2 px-8  text-white rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Edit Information</button>
+
+        </div> : (
+          <>
+          <div className="flex flex-col justify-center">
+          <input type='text' name="text" id = 'text' placeholder="Enter your name" autoComplete='off'></input>
+          <button onClick={() => setShowInvoice(true)}
+          className="bg-blue-500 py-2 px-8  text-white rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Preview Invoice</button>
           </div>
-
-          <div>
-            <ul className='flex items-center justify-between flex-wrap'>
-              <li><button onClick={handlePrint} className='btn btn-print'>Print</ button></li>
-              <li><button className="btn btn-download">Download</button></li>
-              <li><button className="btn btn-send">Send</button></li>
-            </ul>
-          </div>
-        </header>
-
-        <section className="flex flex-col items-end justify-end">
-          <h2 className="text-xl upercase">Your Name</h2>
-          <p>Your Address</p>
-        </section>
-
-        <section className="mt-5">
-          <h2 className="text-xl upercase">Client Name</h2>
-          <p>Client Address</p>
-        </section>
-
-        <article className="my-5 flex items-end justify-end">
-          <ul>
-            <li><span className="font-bold">Invoicer no: </span></li>
-            <li><span className="font-bold">Invoicer Date: </span></li>
-            <li><span className="font-bold">Due Date: </span></li>
-          </ul>
-        </article>
-
-        <div className="my-5">Table</div>
-
-        <section className="mb-5">
-          <p>Notes to client</p>
-        </section>
-
-        <footer>
-          <ul className="flex flex-wrap justify-center items-center">
-            <li><span className="font-bold">Your Name: </span>Chinmay </li>
-            <li><span className="font-bold">Your email: </span>chinmaydorge2002@gmail.com</li>
-            <li><span className="font-bold">Phone Number: </span>987654321</li>
-            <li><span className="font-bold">Bank: </span>Bank Account</li>
-            <li><span className="font-bold">Account holder: </span>Chinmay</li>
-            <li><span className="font-bold">Account Number: </span>1234567890</li>
-            <li><span className="font-bold">Website: </span>www.google.com</li>
-          </ul>
-        </footer>
-
+          </>
+        )}
       </main>
     </>
   );
