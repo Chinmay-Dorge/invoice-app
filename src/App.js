@@ -5,6 +5,7 @@ import MainDetails from "./components/MainDetails";
 import Notes from "./components/Notes";
 import Table from "./components/Table";
 import Dates from './components/Dates';
+import TableForm from "./components/TableForm";
 
 import { useState } from 'react';
 
@@ -23,6 +24,10 @@ function App() {
   const [invoiceDate, setInvoiceDate] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [notes, setNotes] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [amount, setAmount] = useState('');
 
   const handlePrint = () => {
     window.print();
@@ -83,7 +88,7 @@ function App() {
                 </div>
               </article>
 
-              <article className="md:grid grid-cols-2 gap-10">
+              <article className="md:grid grid-cols-2 gap-10 md:mt-20">
                 <div className="flex flex-col">
                   <label htmlFor="clientName">Enter Client Name</label>
                   <input type='text' name="clientName" id='clientName' placeholder="Enter your client name" autoComplete='off' value={clientName} onChange={(e) => setClientName(e.target.value)}></input>
@@ -109,7 +114,7 @@ function App() {
                 </div>
               </article>
 
-
+              <TableForm />
 
               <label htmlFor="notes">Note</label>
               <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Additional notes to the client" value={notes} onChange={(e) => setNotes(e.target.value)}  ></textarea>
