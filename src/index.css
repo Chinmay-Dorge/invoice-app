@@ -12,6 +12,19 @@ button{
   user-select: none;
 }
 
+label{
+  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+}
+
+input, textarea{
+  background-color: #f1f1f1;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  margin-bottom: 2rem;
+  color: #383838
+}
+
 .footer li{
   margin: 0.5rem 0.2rem;
 }
