@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Table = () => {
-    return (
-        <>
+const Table = ({ list}) => {
+  return (
+    <>
       <table width="100%" className="mb-10">
         <thead>
           <tr className="bg-gray-100 p-1">
@@ -26,13 +26,8 @@ const Table = () => {
         ))}
       </table>
 
-      <div>
-        <h2 className="flex items-end justify-end text-gray-800 text-4xl font-bold">
-          Kshs. {total.toLocaleString()}
-        </h2>
-      </div>
     </>
-    )
+  )
 }
 
 export default Table
