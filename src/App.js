@@ -29,6 +29,7 @@ function App() {
   const [quantity, setQuantity] = useState('');
   const [amount, setAmount] = useState('');
   const [list, setList] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const handlePrint = () => {
     window.print();
@@ -41,7 +42,7 @@ function App() {
           <MainDetails name={name} address={address} />
           <ClientDetails clientName={clientName} clientAddress={clientAddress} />
           <Dates invoiceDate={invoiceDate} invoiceNumber={invoiceNumber} dueDate={dueDate} />
-          <Table list={list} />
+          <Table list={list} total={total} setTotal={setTotal}/>
           <Notes notes={notes} />
           <Footer name={name} email={email} website={website} bankAccount={bankAccount} bankName={bankName} phone={phone} />
           <button onClick={() => setShowInvoice(false)}
@@ -115,7 +116,7 @@ function App() {
                 </div>
               </article>
 
-              <TableForm description={description} setDescription={setDescription} quantity={quantity} setQuantity={setQuantity} price={price} setPrice={setPrice} amount={amount} setAmount={setAmount} list={list} setList={setList}/>
+              <TableForm total={total} setTotal={setTotal} description={description} setDescription={setDescription} quantity={quantity} setQuantity={setQuantity} price={price} setPrice={setPrice} amount={amount} setAmount={setAmount} list={list} setList={setList}/>
 
               <label htmlFor="notes">Note</label>
               <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Additional notes to the client" value={notes} onChange={(e) => setNotes(e.target.value)}  ></textarea>
