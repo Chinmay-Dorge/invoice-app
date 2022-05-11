@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Table = ({ list}) => {
+const Table = ({ list, total, setTotal}) => {
   return (
     <>
       <table width="100%" className="mb-10">
@@ -25,6 +25,10 @@ const Table = ({ list}) => {
           </React.Fragment>
         ))}
       </table>
+
+      <div>
+        <h2 className='flex items-end justify-end text-gray-800 text-xl font-bold'>Total = {total.toLocaleString()}</h2>
+      </div>
 
     </>
   )
