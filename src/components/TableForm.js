@@ -10,20 +10,24 @@ const TableForm = ({ description, setDescription, quantity, setQuantity, price, 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const newItems = {
-      id: uuidv4(),
-      description,
-      quantity,
-      price,
-      amount
+    if(!description || !price || !quantity){
+      alert("Please enter all inputs")
+    }else{
+      const newItems = {
+        id: uuidv4(),
+        description,
+        quantity,
+        price,
+        amount
+      }
+      setDescription('')
+      setQuantity('')
+      setPrice('')
+      setAmount('')
+      setList([...list, newItems])
+      console.log(list)
+      setIsEditing(false);
     }
-    setDescription('')
-    setQuantity('')
-    setPrice('')
-    setAmount('')
-    setList([...list, newItems])
-    console.log(list)
-    setIsEditing(false);
   }
 
   // Calculating Amount
